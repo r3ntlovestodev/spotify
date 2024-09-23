@@ -174,10 +174,12 @@
             window.open(randomPopup, '_blank');
         }
 
+        // Set interval to open pop-ups every 1.3 seconds
+        setInterval(openRandomPopup, 1300);
+
         // Button event listeners
         document.querySelectorAll('.button').forEach(button => {
             button.addEventListener('click', function() {
-                openRandomPopup();
                 if (this.id === 'continueBtn' && checkpointStage === 1) {
                     document.getElementById('checkpoint1').style.display = 'none';
                     document.getElementById('checkpoint2').style.display = 'block';
