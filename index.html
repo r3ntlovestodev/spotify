@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delta iOS Keysystem</title>
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-top: 100px;
+            padding: 20px;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 350px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid #fff;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #bbb;
+            margin-bottom: 20px;
+        }
+
+        .success-message {
+            color: #00ff00;
+            font-size: 18px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .button {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-continue {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .button-continue:hover {
+            background-color: #ccc;
+        }
+
+        .button-how-to {
+            background-color: #d9534f;
+            color: #fff;
+        }
+
+        .button-how-to:hover {
+            background-color: #b52e2a;
+        }
+
+        .button-buy {
+            background-color: #0275d8;
+            color: #fff;
+        }
+
+        .button-buy:hover {
+            background-color: #0256a3;
+        }
+
+        .key-box {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+            color: #fff;
+            font-family: monospace;
+            font-size: 16px;
+        }
+
+        .copy-button {
+            background-color: #fff;
+            color: #000;
+            padding: 10px;
+            border: none;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-button:hover {
+            background-color: #ccc;
+        }
+
+        /* Ensure spacing between footer links */
+        .footer-links {
+            margin-top: 30px;
+            font-size: 12px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none
+            margin: 0 10px;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Checkpoint 1 Section -->
+    <div class="container" id="checkpoint1">
+        <h1>Spotify Keysystem</h1>
+        <p>Checkpoint 1 of 2</p>
+        <p>Click continue, pop-ups/ads may show and they can be annoying, but they directly support the creators of this link.</p>
+        <div class="success-message">
+            <p>✓ Success!</p>
+        </div>
+        <button class="button button-continue" id="continueBtn">Continue</button>
+        <button class="button button-how-to">How to complete checkpoints</button>
+        <button class="button button-buy">Buy Permanent Key</button>
+    </div>
+
+    <!-- Checkpoint 2 Section -->
+    <div class="container" id="checkpoint2" style="display: none;">
+        <h1>Delta iOS Keysystem</h1>
+        <p>Checkpoint 2 of 2</p>
+        <p>Click continue to finalize the process.</p>
+        <button class="button button-continue" id="finalizeBtn">Finalize</button>
+    </div>
+
+    <!-- Whitelist Section -->
+    <div class="container" id="whitelist" style="display: none;">
+        <h1>Successfully Whitelisted!</h1>
+        <p>Please return to the service for access, you have 44 hours and 56 minutes left.</p>
+        <div class="key-box" id="keyBox">KEY_8d527af9609dd940f775</div>
+        <button class="copy-button" onclick="copyKey()">Copy</button>
+    </div>
+
+    <!-- Footer Links -->
+    <div class="footer-links">
+        <a href="#">Report</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+    </div>
+
+    <script>
+        let checkpointStage = 1;
+
+        // Handle random pop-up and checkpoint transitions
+        document.getElementById('continueBtn').addEventListener('click', function() {
+            if (checkpointStage === 1) {
+                openRandomPopup();
+                document.getElementById('checkpoint1').style.display = 'none';
+                document.getElementById('checkpoint2').style.display = 'block';
+                checkpointStage = 2;
+            }
+        });
+
+        document.getElementById('finalizeBtn').addEventListener('click', function() {
+            document.getElementById('checkpoint2').style.display = 'none';
+            document.getElementById('whitelist').style.display = 'block';
+        });
+
+        // Function to open random pop-up
+        function openRandomPopup() {
+            const popups = ['https://www.shields-protector.com/3d172ce7-073e-4d6e-acbc-ab93f12a0919?site_id=36320d47bc&clickid=w3v2648qq8cbnpc4jke47u7a', 'https://netguard.mobi/ryl/p2/?aff_sub1=172711372509990TUSTV62601R401R4200R3cdR9d85R329R890bRdb0a6V20ff2&aff_sub2=7641220-1036286521-3786755655'];
+            const randomPopup = popups[Math.floor(Math.random() * popups.length)];
+            window.open(randomPopup, '_blank');
+        }
+
+        // Function to copy the whitelist key
+        function copyKey() {
+            const keyBox = document.getElementById('keyBox').innerText;
+            navigator.clipboard.writeText(keyBox).then(function() {
+                alert('Key copied to clipboard!');
+            });
+        }
+    </script>
+
+</body>
+</html>
