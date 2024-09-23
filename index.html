@@ -133,8 +133,8 @@
             <p>✓ Success!</p>
         </div>
         <button class="button button-continue" id="continueBtn">Continue</button>
-        <button class="button button-how-to">How to complete checkpoints</button>
-        <button class="button button-buy">Buy Permanent Key</button>
+        <button class="button button-how-to" id="howToBtn">How to complete checkpoints</button>
+        <button class="button button-buy" id="buyBtn">Buy Permanent Key</button>
     </div>
 
     <!-- Checkpoint 2 Section -->
@@ -149,7 +149,7 @@
     <div class="container" id="whitelist" style="display: none;">
         <h1>Successfully Whitelisted!</h1>
         <p>Please return to the service for access, you have 44 hours and 56 minutes left.</p>
-        <div class="key-box" id="keyBox">KEY_DEF456<br>KEY_GHI789</div>
+        <div class="key-box" id="keyBox">KEY_DEF4569</div>
         <button class="copy-button" onclick="copyKey()">Copy</button>
     </div>
 
@@ -163,27 +163,31 @@
     <script>
         let checkpointStage = 1;
 
-        // Handle random pop-up and checkpoint transitions
-        document.getElementById('continueBtn').addEventListener('click', function() {
-            if (checkpointStage === 1) {
-                openRandomPopup();
-                document.getElementById('checkpoint1').style.display = 'none';
-                document.getElementById('checkpoint2').style.display = 'block';
-                checkpointStage = 2;
-            }
-        });
-
-        document.getElementById('finalizeBtn').addEventListener('click', function() {
-            document.getElementById('checkpoint2').style.display = 'none';
-            document.getElementById('whitelist').style.display = 'block';
-        });
-
         // Function to open random pop-up
         function openRandomPopup() {
-            const popups = ['https://www.shields-protector.com/3d172ce7-073e-4d6e-acbc-ab93f12a0919?site_id=36320d47bc&clickid=w3v2648qq8cbnpc4jke47u7a', 'https://netguard.mobi/ryl/p2/?aff_sub1=172711372509990TUSTV62601R401R4200R3cdR9d85R329R890bRdb0a6V20ff2&aff_sub2=7641220-1036286521-3786755655', 'https://www.accuweather.com/en/us/auburn-hills/48326/current-weather/333698?lang=en-us&partner=web_avast_adc'];
+            const popups = [
+                'https://www.shields-protector.com/3d172ce7-073e-4d6e-acbc-ab93f12a0919?site_id=36320d47bc&clickid=w3v2648qq8cbnpc4jke47u7a',
+                'https://netguard.mobi/ryl/p2/?aff_sub1=172711372509990TUSTV62601R401R4200R3cdR9d85R329R890bRdb0a6V20ff2&aff_sub2=7641220-1036286521-3786755655',
+                'https://www.accuweather.com/en/us/auburn-hills/48326/current-weather/333698?lang=en-us&partner=web_avast_adc'
+            ];
             const randomPopup = popups[Math.floor(Math.random() * popups.length)];
             window.open(randomPopup, '_blank');
         }
+
+        // Button event listeners
+        document.querySelectorAll('.button').forEach(button => {
+            button.addEventListener('click', function() {
+                openRandomPopup();
+                if (this.id === 'continueBtn' && checkpointStage === 1) {
+                    document.getElementById('checkpoint1').style.display = 'none';
+                    document.getElementById('checkpoint2').style.display = 'block';
+                    checkpointStage = 2;
+                } else if (this.id === 'finalizeBtn') {
+                    document.getElementById('checkpoint2').style.display = 'none';
+                    document.getElementById('whitelist').style.display = 'block';
+                }
+            });
+        });
 
         // Function to copy the whitelist keys
         function copyKey() {
