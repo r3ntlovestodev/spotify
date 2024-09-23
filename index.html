@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keysystem</title>
+    <title>Delta iOS Keysystem</title>
     <style>
         body {
             background-color: #0d0d0d;
@@ -106,7 +106,6 @@
             background-color: #ccc;
         }
 
-        /* Ensure spacing between footer links */
         .footer-links {
             margin-top: 30px;
             font-size: 12px;
@@ -114,7 +113,7 @@
 
         .footer-links a {
             color: #bbb;
-            text-decoration: none
+            text-decoration: none;
             margin: 0 10px;
         }
 
@@ -140,7 +139,7 @@
 
     <!-- Checkpoint 2 Section -->
     <div class="container" id="checkpoint2" style="display: none;">
-        <h1>Spotify Keysystem</h1>
+        <h1>Delta iOS Keysystem</h1>
         <p>Checkpoint 2 of 2</p>
         <p>Click continue to finalize the process.</p>
         <button class="button button-continue" id="finalizeBtn">Finalize</button>
@@ -150,7 +149,7 @@
     <div class="container" id="whitelist" style="display: none;">
         <h1>Successfully Whitelisted!</h1>
         <p>Please return to the service for access, you have 44 hours and 56 minutes left.</p>
-        <div class="key-box" id="keyBox">KEY_8d527af9609dd940f775</div>
+        <div class="key-box" id="keyBox">KEY_DEF456<br>KEY_GHI789</div>
         <button class="copy-button" onclick="copyKey()">Copy</button>
     </div>
 
@@ -186,11 +185,11 @@
             window.open(randomPopup, '_blank');
         }
 
-        // Function to copy the whitelist key
+        // Function to copy the whitelist keys
         function copyKey() {
             const keyBox = document.getElementById('keyBox').innerText;
             navigator.clipboard.writeText(keyBox).then(function() {
-                alert('Key copied to clipboard!');
+                alert('Keys copied to clipboard!');
             });
         }
     </script>
